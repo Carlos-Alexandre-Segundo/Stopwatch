@@ -1,10 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
+using ConsoleApp1;
 
-builder.Services = WebApplication<StopwatchTimer>();
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddSingleton<StopwatchTimer>();
+//AddSingleton é para sempre usar a mesma instância, mesmo mudando as requisições https.
 
 builder.Services.AddOpenApi();
 

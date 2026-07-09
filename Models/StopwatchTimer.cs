@@ -6,8 +6,8 @@ namespace ConsoleApp1;
 
 public class StopwatchTimer
 {
-    public DateTime _startedAt {get; private set; }
-    public TimeSpan _elapsedTime { get; private set; }
+    public DateTime StartedAt {get; private set; }
+    public TimeSpan ElapsedTime { get; private set; }
 
     private StopwatchState _state = StopwatchState.Idle;
 
@@ -15,17 +15,17 @@ public class StopwatchTimer
     {
         if (_state == StopwatchState.Running)
         {
-           return _elapsedTime + (DateTime.UtcNow - _startedAt);
+           return ElapsedTime + (DateTime.UtcNow - StartedAt);
         }
-       return _elapsedTime;
+       return ElapsedTime;
     }
     public void Start()
     {
         if (_state != StopwatchState.Idle)
             return;
 
-        _elapsedTime = TimeSpan.Zero;
-        _startedAt = DateTime.UtcNow;
+        ElapsedTime = TimeSpan.Zero;
+        StartedAt = DateTime.UtcNow;
         _state = StopwatchState.Running;
     }
     public void Pause()
@@ -33,7 +33,7 @@ public class StopwatchTimer
         if (_state != StopwatchState.Running)
             return;
 
-        _elapsedTime += DateTime.UtcNow - _startedAt;
+        ElapsedTime += DateTime.UtcNow - StartedAt;
         _state = StopwatchState.Paused;
     }
     public void Resume()
@@ -41,21 +41,21 @@ public class StopwatchTimer
         if (_state != StopwatchState.Paused)
             return;
 
-        _startedAt = DateTime.UtcNow;
+        StartedAt = DateTime.UtcNow;
         _state = StopwatchState.Running;
     }
     public void Reset()
     {
-        _elapsedTime = TimeSpan.Zero;
-        _startedAt = DateTime.UtcNow;
+        ElapsedTime = TimeSpan.Zero;
+        StartedAt = DateTime.UtcNow;
         _state = StopwatchState.Idle;
     }
-
-
     enum StopwatchState
     {
         Running,
         Paused,
         Idle
     }
+
+    public string StateName => _state.ToString();
 }
