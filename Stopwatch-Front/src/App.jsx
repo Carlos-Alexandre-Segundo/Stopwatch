@@ -11,7 +11,7 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setStatus(data.state)
-        setElapsedTime(data.elapsedTime)
+        setElapsedTime(formatElapsedTime(data.elapsedTime))
       })
       .catch(error => {
         console.error('Erro ao acessar a API:', error)
@@ -27,13 +27,19 @@ function App() {
         .then(response => response.json())
         .then(data => {
           setStatus(data.state)
-          setElapsedTime(data.elapsedTime)
+          setElapsedTime(formatElapsedTime(data.elapsedTime))
         })
-    }, 100)
+    }, 1000)
 
     return () => clearInterval(interval)
   }, [status])
 
+
+  function formatElapsedTime(value) {
+    if(!value) return '00:00:00'
+
+     return value.substring(0, 8)
+    }
 
   function handleStart(){
     fetch('http://localhost:5168/api/stopwatch/start', {
@@ -49,7 +55,7 @@ function App() {
   }
 
   function handlePause(){
-    fetch('http://localhost:5168/api/stopwatch/paused', {
+    fetch('http://localhost:5168/api/stopwatch/pause', {
       method: 'POST'
   })
     .then(response => response.json())
@@ -61,6 +67,19 @@ function App() {
     })
   }
 
+  function handleResume(){
+    fetch('http://localhost:5168/api/stopwatch/resume', {
+      method: 'POST'
+    })
+      .then(response => response.json())
+      .then(() => {
+        setStatus('Running')
+      })
+      .catch(error => {
+        console.error('Erro ao acessar a API:', error)
+      })
+  }
+
   function handleReset(){
     fetch('http://localhost:5168/api/stopwatch/reset', {
       method: 'POST'
@@ -68,11 +87,14 @@ function App() {
     .then(response => response.json())
     .then(() => {
       setStatus('Idle')
+      setElapsedTime('00:00:00')
     })
     .catch(error => {
       console.error('Erro ao acessar a API:', error)
     })
-  }
+
+     return () => clearInterval(interval)
+    }
 
   return (
     <main>
@@ -84,6 +106,9 @@ function App() {
 
       <button onClick={handleStart}>
         Start
+      </button>
+      <button onClick={handleResume}>
+        Resume
       </button>
       <button onClick={handlePause}>
         Pause
