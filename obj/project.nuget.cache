@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pwNgutmywB4=",
+  "dgSpecHash": "cFU6qckKdh4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\carlos.segundo\\source\\workspace\\StopwatchApi\\StopwatchApi.csproj",
+  "projectFilePath": "C:\\Users\\carlos.segundo\\source\\workspace\\Stopwatch\\StopwatchApi\\StopwatchApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\carlos.segundo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.9\\microsoft.aspnetcore.openapi.10.0.9.nupkg.sha512",
     "C:\\Users\\carlos.segundo\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
@@ -12,9 +12,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "O pacote 'Microsoft.OpenApi' 2.0.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "C:\\Users\\carlos.segundo\\source\\workspace\\StopwatchApi\\StopwatchApi.csproj",
+      "projectPath": "C:\\Users\\carlos.segundo\\source\\workspace\\Stopwatch\\StopwatchApi\\StopwatchApi.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\carlos.segundo\\source\\workspace\\StopwatchApi\\StopwatchApi.csproj",
+      "filePath": "C:\\Users\\carlos.segundo\\source\\workspace\\Stopwatch\\StopwatchApi\\StopwatchApi.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"
