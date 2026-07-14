@@ -1,0 +1,7 @@
+bin/
+obj/
+**/bin/
+**/obj/
+node_modules/
+backup-root-api/
+.vscodecsdt/
