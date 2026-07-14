@@ -35,7 +35,7 @@ function App() {
   }, [status])
 
 
-  function handle(){
+  function handleStart(){
     fetch('http://localhost:5168/api/stopwatch/start', {
       method: 'POST'
   })
@@ -48,7 +48,7 @@ function App() {
     })
   }
 
-  function handle(){
+  function handlePause(){
     fetch('http://localhost:5168/api/stopwatch/paused', {
       method: 'POST'
   })
@@ -61,7 +61,7 @@ function App() {
     })
   }
 
-  function handle(){
+  function handleReset(){
     fetch('http://localhost:5168/api/stopwatch/reset', {
       method: 'POST'
   })
@@ -82,13 +82,13 @@ function App() {
 
       <p>Status: {status}</p>
 
-      <button onClick={handle}>
+      <button onClick={handleStart}>
         Start
       </button>
-      <button onClick={handle}>
+      <button onClick={handlePause}>
         Pause
       </button>
-      <button onClick={handle}>
+      <button onClick={handleReset}>
         Reset
       </button>
     </main>
